@@ -1,0 +1,12 @@
+@import "tailwindcss/base";
+
+@import "tailwindcss/components";
+
+@import "global.css";
+@import "base.css";
+@import "dialog.css";
+@import "toast.css";
+@import "loader.css";
+@import "nav.css";
+
+@import "tailwindcss/utilities";

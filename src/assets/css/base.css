@@ -1,0 +1,79 @@
+body{
+    @apply text-base;
+    @apply text-darkyellow;
+}
+#main-container{
+    background:#213040;
+}
+@media (min-width:1200px){
+    .container{
+        max-width: 1100px;
+        padding:10px 16px 20px;
+        margin:0 auto;
+        @apply min-h-screen;
+    }
+}
+h1{
+    @apply text-3xl;
+}
+h2{
+    @apply text-2xl;
+}
+h3{
+    @apply text-xl;
+}
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="phone"]{
+    @apply bg-gray-100;
+}
+
+input[type="text"]:read-only,
+input[type="email"]:read-only,
+input[type="password"]:read-only,
+input[type="phone"]:read-only{
+    @apply bg-gray-300;
+    @apply cursor-default;
+}
+
+.btn{
+    @apply py-2 px-8 text-gray-900 text-center rounded outline-none font-semibold;
+}
+.btn:focus{
+    @apply outline-none;
+}
+.btn:hover{
+    opacity:0.85;
+}
+.btn-primary{
+    @apply bg-darkyellow;
+}
+
+a.primary-link{
+    @apply text-darkyellow;
+}
+a.primary-link:hover{
+    @apply text-lightgreen;
+    @apply underline;
+}
+
+.btn-trasparent{
+    @apply bg-transparent border border-gray-800 text-gray-300 btn px-6 text-gray-400;
+}
+.btn-trasparent:hover{
+    @apply text-white;
+}
+
+.form-container{
+    @apply rounded px-8 pt-8 pb-8 mb-4 text-gray-700 bg-white shadow-md text-gray-700;
+}
+.otp-input{
+    @apply bg-white outline-none text-3xl w-40 border border-gray-400 text-center rounded;
+    letter-spacing:1.2rem;
+    background-color: rgba(255,255,255, 100) !important;
+}
+.otp-input::-webkit-inner-spin-button{
+    -webkit-appearance: none;
+    -moz-appearance: none;
+}

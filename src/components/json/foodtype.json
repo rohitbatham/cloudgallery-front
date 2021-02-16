@@ -1,0 +1,114 @@
+[
+  {
+    "value": "Mexican",
+    "label": "Mexican"
+  },
+  {
+    "value": "Carribbean",
+    "label": "Carribbean"
+  },
+  {
+    "value": "Barbecue",
+    "label": "Barbecue"
+  },
+  {
+    "value": "Breakfast/Brunch",
+    "label": "Breakfast/Brunch"
+  },
+  {
+    "value": "Chinese",
+    "label": "Chinese"
+  },
+  {
+    "value": "Burger",
+    "label": "Burger"
+  },
+  {
+    "value": "Deli",
+    "label": "Deli"
+  },
+  {
+    "value": "Healthy",
+    "label": "Healthy"
+  },
+  {
+    "value": "Latin American",
+    "label": "Latin American"
+  },
+  {
+    "value": "Pizza",
+    "label": "Pizza"
+  },
+  {
+    "value": "Seafood",
+    "label": "Seafood"
+  },
+  {
+    "value": "Vegetarian/Vegan Friendly",
+    "label": "Vegetarian/Vegan Friendly"
+  },
+  {
+    "value": "Wings",
+    "label": "Wings"
+  },
+  {
+    "value": "Indian",
+    "label": "Indian"
+  },
+  {
+    "value": "Thai",
+    "label": "Thai"
+  },
+  {
+    "value": "Italian",
+    "label": "Italian"
+  },
+  {
+    "value": "Noodle",
+    "label": "Noodle"
+  },
+  {
+    "value": "Japanese",
+    "label": "Japanese"
+  },
+  {
+    "value": "French",
+    "label": "French"
+  },
+  {
+    "value": "Greek",
+    "label": "Greek"
+  },
+  {
+    "value": "Mediterranean",
+    "label": "Mediterranean"
+  },
+  {
+    "value": "Dessert",
+    "label": "Dessert"
+  },
+  {
+    "value": "Sushi",
+    "label": "Sushi"
+  },
+  {
+    "value": "Steak",
+    "label": "Steak"
+  },
+  {
+    "value": "Chicken",
+    "label": "Chicken"
+  },
+  {
+    "value": "Middle Eastern",
+    "label": "Middle Eastern"
+  },
+  {
+    "value": "Latin American",
+    "label": "Latin American"
+  },
+  {
+    "value": "South American",
+    "label": "South American"
+  }
+]

@@ -1,0 +1,13 @@
+
+
+
+@media (max-width:767px) {
+    .meganav aside > nav{
+        max-width: 270px !important;
+    }
+}
+@media (min-width:768px) {
+    .meganav aside > nav{
+        max-width: 360px !important;
+    }
+}
