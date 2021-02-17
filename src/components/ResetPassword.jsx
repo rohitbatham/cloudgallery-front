@@ -28,7 +28,7 @@ export default({}) => {
         }
     };
     const ValidateOTP = (requestOptions) => {
-        fetch(`${API_ENDPOINT}/reset-password?userType=restaurant&otpType=reset`, requestOptions)
+        fetch(`${API_ENDPOINT}/reset-password?otpType=reset`, requestOptions)
             .then(response => response.json())
             .then(data => {
                 setLoading(false)
@@ -43,7 +43,7 @@ export default({}) => {
             });
     }
     const SendOTP = (requestOptions) => {
-        fetch(`${API_ENDPOINT}/sendotp?userType=restaurant&otpType=reset`, requestOptions)
+        fetch(`${API_ENDPOINT}/sendotp?otpType=reset`, requestOptions)
             .then(response => response.json())
             .then(data => {
                 setLoading(false)
