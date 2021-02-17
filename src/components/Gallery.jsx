@@ -80,11 +80,11 @@ const ImageCard = ({
         
         <div class="relative mb-8">
             <div 
-                style={{ backgroundImage: `url(\"https://cloudgallery.s3.ap-south-1.amazonaws.com/${image}\")`}}
+                style={{ backgroundImage: `url(\"http://dyqm5nexnuoxl.cloudfront.net/${image}\")`}}
                 class="h-48 bg-cover border-8 border-white"
             >
             </div>     
-            <a className={`px-3 py-1 block bg-white hover:bg-teal-500 w-full text-center border-b text-gray-600 hover:text-white`} href={`https://cloudgallery.s3.ap-south-1.amazonaws.com/${image}`}>View</a>
+            <a className={`px-3 py-1 block bg-white hover:bg-teal-500 w-full text-center border-b text-gray-600 hover:text-white`} href={`http://dyqm5nexnuoxl.cloudfront.net/${image}`}>View</a>
             
             <button 
                 class="px-3 py-1 bg-white hover:bg-red-500 w-full text-gray-600  border-b hover:text-white"
