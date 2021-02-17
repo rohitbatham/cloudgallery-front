@@ -58,31 +58,31 @@ export default ({ }) => {
                 <form class="form-container" onSubmit={handleSubmit(onSubmit)}>
 
                     <div className={`mb-4`}>
-                        <Input name="restaurant_name"
-                            placeholder="Restaurant Name"
-                            defaultValue={user.restaurant_name}
+                        <Input name="fname"
+                            placeholder="First Name"
+                            defaultValue={user.fname}
                             inputRef={register({ required: false })}
                             readonly={(type == "edit") ? false : "readonly"} /> 
                     </div>
+                    <div className={`mb-4`}>
+                        <Input name="lname" 
+                            placeholder="Last Name" 
+                            defaultValue={user.lname} 
+                            inputRef={register({ required: false })} 
+                            readonly={(type == "edit") ? false : "readonly"}/>
+                    </div>
                     { (type !== "edit") &&  <div className={`mb-4`}> 
-                        <Input name="restaurant_email"
-                            placeholder="Restaurant Email"
-                            defaultValue={user.restaurant_email}
+                        <Input name="email"
+                            placeholder="Email"
+                            defaultValue={user.email}
                             inputRef={register({ required: false })}
                             readonly={"readonly"} /> 
                     </div>
                         }
                     <div className={`mb-4`}>
-                        <Input name="restaurant_phone"
-                            placeholder="Restaurant Phone"
-                            defaultValue={user.restaurant_phone}
-                            inputRef={register({ required: false })} 
-                            readonly={(type == "edit") ? false : "readonly"}/>
-                    </div>
-                    <div className={`mb-4`}>
-                        <Input name="restaurant_address" 
-                            placeholder="Restaurant Address" 
-                            defaultValue={user.restaurant_address} 
+                        <Input name="phone"
+                            placeholder="Phone"
+                            defaultValue={user.phone}
                             inputRef={register({ required: false })} 
                             readonly={(type == "edit") ? false : "readonly"}/>
                     </div>

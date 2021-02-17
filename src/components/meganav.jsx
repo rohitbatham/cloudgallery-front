@@ -23,7 +23,6 @@ export default({}) => {
                     <nav>
                     {(isLoggedIn()) ? 
                     <ul>
-                        <NavLink path="/dashboard" setShowNav={setShowNav}>Dashboard</NavLink>
                         <NavLink path="/upload" setShowNav={setShowNav}>Upload</NavLink>
                         <NavLink path="/gallery" setShowNav={setShowNav}>My Photos</NavLink>
                         <li><hr/></li>

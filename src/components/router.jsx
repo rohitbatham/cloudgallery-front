@@ -1,5 +1,5 @@
 import React from "react";
-import { Home, About, Contact}  from "./core/content.jsx";
+import { Home, Contact}  from "./core/content.jsx";
 import SignIn       from './signin.jsx';
 import SignUp       from './signup.jsx';
 import SignOut      from './signout.jsx';
@@ -7,7 +7,6 @@ import ResetPassword from "./ResetPassword.jsx";
 import VerifyEmail  from './verify-email.jsx';
 import Profile      from './profile.jsx';
 import ChangePassword from './ChangePassword.jsx';
-import Dashboard    from './dashboard/home.jsx';
 import UploadPhoto   from './Upload.jsx'
 import Gallery from './Gallery.jsx'
 
@@ -25,7 +24,6 @@ import { isLoggedIn } from "./utils/user";
         <div>
           <Switch>
             <Route path="/" exact><Home /></Route>
-            <Route path="/about"><About /></Route>
             <Route path="/contact"><Contact /></Route>
             <Route path="/sign-in"><SignIn /></Route>
             <Route path="/sign-up"><SignUp /></Route>
@@ -37,9 +35,7 @@ import { isLoggedIn } from "./utils/user";
             <PrivateRoute path="/change-password" exact><ChangePassword /></PrivateRoute>
             
             {/* For Dashboard */}
-            <PrivateRoute path="/dashboard" exact><Dashboard /></PrivateRoute>
-                        
-            <PrivateRoute path="/upload-photos" exact><UploadPhoto /></PrivateRoute>
+            <PrivateRoute path="/upload" exact><UploadPhoto /></PrivateRoute>
             {/* For Listing gallery image*/ }
             <PrivateRoute path="/gallery" exact><Gallery /></PrivateRoute>
           </Switch>

@@ -1,12 +1,8 @@
 import React, { useState, useEffect, useRef, Fragment } from "react";
-import Creatable from 'react-select/creatable';
-import { components } from "react-select";
-import { RHFInput } from 'react-hook-form-input';
-import { useForm } from 'react-hook-form';
 import { DisplayAlert, DisplayError } from "./core/alert.jsx";
 import { Input, Button } from "./core/form.jsx";
+import { useForm } from 'react-hook-form';
 import { API_ENDPOINT } from "./config";
-import FoodTypeList from "./json/foodtype.json";
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
 
 
@@ -14,7 +10,6 @@ export default({}) => {
     const { register, handleSubmit, reset, errors, watch } = useForm(); 
     const password = useRef({});
     password.current = watch("password", "");
-    const [ step, setStep ] = useState("one");
     const [ signedup, setSignedup ] = useState(false);
     const [ loading, setLoading ] = useState(false);
     const [ showMessage, setShowMessage ] = useState(false);
@@ -22,67 +17,38 @@ export default({}) => {
     const [ cpwdinputtype, setCpwdinputtype ] = useState('password');
     const [ resp, setResp ] = useState({});
     const onSubmit = (formData) => { 
-        if(step == "one"){
-            setStep("two");
-        }else if(step == "two"){ 
-            formData["usertype"] = "restaurant";  // setting userType is business for restaurant user
-            const requestOptions = {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(formData)
-            };
-            setLoading(true);
-            fetch(`${API_ENDPOINT}/register`, requestOptions)
-                .then(response => response.json())
-                .then(data => {
+        const requestOptions = {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(formData)
+        };
+        setLoading(true);
+        fetch(`${API_ENDPOINT}/register`, requestOptions)
+            .then(response => response.json())
+            .then(data => {
+                setLoading(false);
+                setResp(data);
+                setShowMessage(true);
+                if(data.status){
+                    setSignedup(true)
                     setLoading(false);
-                    setResp(data);
-                    setShowMessage(true);
-                    if(data.status){
-                        setSignedup(true)
-                        reset();
-                    }
-            }).catch(()=>{
-                alert('Something went wrong. Please try later on.')
-            });
-        }
+                    reset();
+                }
+        }).catch(()=>{
+            setLoading(false);
+            alert('Something went wrong. Please try later on.')
+        });
     };
-    const [ foodtypes, setFoodtypes ] = useState([]);
-    useEffect( () =>{
-        Promise.resolve(FoodTypeList).then((data) => { console.log(data)
-            setFoodtypes(data);
-          }, (value) => {
-            
-          });
-    },[])
-    // validation
-    const Menu = props => {
-        const optionSelectedLength = props.getValue().length || 0;
-        console.log(optionSelectedLength)
-        return (
-          <components.Menu {...props}>
-            {optionSelectedLength < 3 ? (
-              props.children
-            ) : (
-              <div className={`shadow appearance-none border font-bold rounded text-gray-400 p-3`}>Max limit achieved</div>
-            )}
-          </components.Menu>
-        );
-      };
-    const isValidNewOption = (inputValue, selectValue) => inputValue.length > 0 && selectValue.length < 3;
-   
     return(
         <Fragment>
-            { loading && (<DisplayAlert title={'Hold on'} summary={'Please do not refresh or go back.'} type={resp.type} setShowMessage={setShowMessage} />) }
-            
             { showMessage && (<DisplayAlert title={resp.title} summary={resp.message} type={resp.type} setShowMessage={setShowMessage} />) }
             { (!signedup) && (<Fragment>
                 <h1 className="text-center heading-2 mb-3">
-                    {(step === "one") ? "Sign Up" : "Tell us about your Restaurant" }
+                    Sign Up
                 </h1>
                 <div className="w-full max-w-sm mx-auto">
                     <form className="form-container" onSubmit={handleSubmit(onSubmit)}>
-                        <div className={`mb-4 ${(step === "one") ? '' : 'hidden'}`}>
+                        <div className={`mb-4`}>
                             <Input 
                                 inputRef={register({
                                     required: "Required",
@@ -92,11 +58,11 @@ export default({}) => {
                                     }
                                 })}
                                 name="email"
-                                type="text" placeholder="Username" />
-                                {(errors.email && errors.email.type === "required") && (<DisplayError msg="Username is required" />)}
+                                type="text" placeholder="Email" />
+                                {(errors.email && errors.email.type === "required") && (<DisplayError msg="Email is required" />)}
                                 {(errors.email && errors.email.type === "pattern") && (<DisplayError msg="Invalid email address" />)}
                         </div>
-                        <div className={`mb-4 relative ${(step === "one") ? '' : 'hidden'}`}>
+                        <div className={`mb-4 relative`}>
                             <Input 
                                 inputRef={register({ 
                                     required: true,
@@ -112,7 +78,7 @@ export default({}) => {
                                 </i>
                                 {errors.password && (<DisplayError msg="Password length should be minmum 8."  />) }
                         </div>
-                        <div className={`mb-4 relative ${(step === "one") ? '' : 'hidden'}`}>
+                        <div className={`mb-4 relative`}>
                             <Input 
                                 inputRef={register({
                                     validate: value =>
@@ -128,37 +94,17 @@ export default({}) => {
                                 </i>
                                 {errors.cpassword && (<DisplayError msg="Password does not match"  />) }
                         </div>
-                        <div className={`mb-4 ${(step === "two") ? '' : 'hidden'}`}>
-                            <Input name="restaurant_name" placeholder="Restaurant Name" inputRef={register({required:false})} />
+                        <div className={`mb-4`}>
+                            <Input name="fname" placeholder="First Name" inputRef={register({required:false})} />
                         </div>
-                        <div className={`mb-4 ${(step === "two") ? '' : 'hidden'}`}>
-                            <Input name="restaurant_phone" placeholder="Restaurant Phone" inputRef={register({required:false})}  />
+                        <div className={`mb-4`}>
+                            <Input name="lname" placeholder="Last Phone" inputRef={register({required:false})}  />
                         </div>
-                        <div className={`mb-4 ${(step === "two") ? '' : 'hidden'}`}>
-                            <Input name="restaurant_address" placeholder="Restaurant Address"  inputRef={register({required:false})} />
-                        </div>
-                        <div className={`mb-4 ${(step === "two") ? '' : 'hidden'}`}>
-                            <Input name="restaurant_hours" placeholder="Hours of Business"  inputRef={register({required:false})} />
-                        </div>
-                        <div className={`mb-4 ${(step === "two") ? '' : 'hidden'}`}>
-                        
-                            <RHFInput
-                                as={<Creatable
-                                    components={{Menu}}
-                                    isMulti
-                                    isValidNewOption={isValidNewOption}
-                                    options={foodtypes}
-                                    placeholder="Select food types"
-                                    classNamePrefix="Select Foodtypes"
-                                    className="appearance-none font-normal rounded w-full mb-1 text-gray-700 leading-tight focus:outline-none"
-                                />}
-                                register={register({required:false})}
-                                setValue={()=>{}}
-                                name="foodtype"
-                            />
+                        <div className={`mb-4`}>
+                            <Input name="phone" placeholder="Phone number" type="number"  inputRef={register({required:false})} />
                         </div>
                         <div className={`flex items-center justify-center`}>
-                            <Button type="submit">{ step === "two" ? "Sign Up" : "Continue" }</Button>
+                            <Button type="submit" disabled={loading}>{loading? 'Please wait..'  : 'Sign Up'}</Button>
                         </div>
                     </form>
                 </div>

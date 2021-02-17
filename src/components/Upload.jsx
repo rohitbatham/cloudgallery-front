@@ -22,7 +22,7 @@ export default ({
             headers: { 'Content-Type': 'application/json', 'authorization' : getToken() },
             body: JSON.stringify(images)
         };
-        fetch(`${API_ENDPOINT}/restaurantmenus/add?uuid=${decodeToken().uuid}`, requestOptions)
+        fetch(`${API_ENDPOINT}/gallery/add?uuid=${decodeToken().uuid}`, requestOptions)
             .then(response => response.json())
             .then(data => {
                 setUploading(false);
@@ -49,9 +49,9 @@ export default ({
                 onClick={submitImages}
             >{(uploading)? 'Please wait...' : 'Upload' }</button>)
             }
-            <Link to="/restaurant-menus" 
-                class="w-full my-6 block md:inline-block md:w-auto btn bg-trasparent border border-gray-800 hover:bg-green-600 text-gray-200"
-            >Go Back to Gallery</Link>
+            <Link to="/gallery" 
+                class="w-full mx-auto my-6 block md:w-auto btn bg-trasparent border border-gray-800 hover:bg-green-600 text-gray-200"
+            >Back to Gallery</Link>
         </Fragment>
     )
 }
